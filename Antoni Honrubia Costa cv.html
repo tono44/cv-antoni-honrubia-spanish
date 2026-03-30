@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Antoni Honrubia - Creative Technologist</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #12141a; /* Un negro más profundo y tech */
+            --accent: #00a8ff;
+            --accent-light: #33ccff; /* Para degradados */
+            --text-dark: #2d3436;
+            --text-light: #636e72;
+            --sidebar-bg: #12141a;
+            --bg-body: #f1f2f6;
+            --card-bg: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            padding: 40px 20px;
+            /* MEJORA 1: Fondo de cuadrícula sutil */
+            background-color: var(--bg-body);
+            background-image: radial-gradient(#d1d1d1 0.5px, transparent 0.5px), radial-gradient(#d1d1d1 0.5px, var(--bg-body) 0.5px);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+        }
+
+        .cv-container {
+            max-width: 950px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.15); /* Sombra más profunda */
+            border-radius: 16px; /* Bordes más suaves */
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.05); /* Borde casi invisible */
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        a:hover { color: var(--accent); }
+
+        /* Sidebar */
+        .sidebar {
+            background-color: var(--sidebar-bg);
+            color: white;
+            padding: 60px 40px; /* Más aire */
+            border-right: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .profile h1 { font-size: 2rem; line-height: 1.1; margin-bottom: 8px; font-weight: 700; letter-spacing: -1px; }
+        .tagline { color: var(--accent); font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 50px; }
+
+        .section-title-side {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #888;
+            margin-bottom: 18px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 6px;
+            margin-top: 40px;
+        }
+
+        .contact-item { margin-bottom: 14px; font-size: 0.9rem; display: flex; align-items: center; }
+        .contact-item span { color: var(--accent); margin-right: 10px; width: 20px; text-align: center; }
+
+        .skills-list { list-style: none; }
+        .skills-list li { 
+            margin-bottom: 10px; 
+            font-size: 0.85rem; 
+            background: rgba(255,255,255,0.03); 
+            padding: 6px 12px; 
+            border-radius: 6px;
+            border-left: 3px solid transparent; /* Reservamos espacio */
+            transition: all 0.3s ease; /* Transición suave */
+        }
+        /* MEJORA 3: Efecto de luz interactivo */
+        .skills-list li:hover {
+            background: rgba(255,255,255,0.08);
+            border-left: 3px solid var(--accent);
+            transform: translateX(5px);
+        }
+
+        /* Main Content */
+        .main-content { padding: 60px; }
+
+        h2 {
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            /* MEJORA 2: Degradado suave en títulos */
+            background: linear-gradient(135deg, var(--primary) 60%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        h2::after { content: ""; flex: 1; height: 1px; background: rgba(0,0,0,0.08); margin-left: 20px; }
+
+        .about-text { font-size: 1rem; color: var(--text-light); margin-bottom: 50px; text-align: justify; font-weight: 400; }
+
+        .experience-item { margin-bottom: 40px; position: relative; }
+        .job-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4px; }
+        .job-title { font-size: 1.2rem; font-weight: 700; color: var(--primary); }
+        .job-date { font-size: 0.85rem; color: var(--accent); font-weight: 600; background: rgba(0,168,255,0.08); padding: 2px 8px; border-radius: 4px; }
+        .company-name { font-weight: 600; color: var(--text-light); margin-bottom: 12px; display: block; font-size: 0.95rem; }
+
+        .experience-item ul { padding-left: 20px; color: var(--text-light); font-size: 0.95rem; }
+        .experience-item li { margin-bottom: 6px; }
+
+        .education-item { margin-bottom: 25px; }
+        .edu-title { font-weight: 700; color: var(--primary); display: block; font-size: 1rem; }
+        .edu-desc { font-size: 0.9rem; color: var(--text-light); }
+
+        /* MEJORA 4: Botón Portfolio refinado */
+        .portfolio-btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 14px 30px;
+            background: linear-gradient(135deg, var(--accent) 0%, #0097e6 100%);
+            color: white;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 20px rgba(0,168,255,0.2);
+            transition: all 0.3s ease;
+        }
+        .portfolio-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0,168,255,0.3);
+            background: linear-gradient(135deg, var(--accent-light) 0%, var(--accent) 100%);
+        }
+
+        @media print {
+            body { padding: 0; background: white; background-image: none; }
+            .cv-container { box-shadow: none; border-radius: 0; width: 100%; border: none; }
+            .sidebar { border-right: none; }
+            .skills-list li { background: rgba(0,0,0,0.03); color: #333; border-left: 3px solid #ccc; }
+            h2 { background: none; -webkit-text-fill-color: var(--primary); color: var(--primary); }
+            h2::after { background: #eee; }
+            .portfolio-btn { display: none; }
+            .job-date { background: none; color: var(--accent); border: 1px solid #eee; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cv-container">
+        <aside class="sidebar">
+            <div class="profile">
+                <h1>Antoni<br>Honrubia Costa</h1>
+                <p class="tagline">Creative Technologist</p>
+            </div>
+
+            <div class="section-title-side">Contacto</div>
+            <a href="tel:+34676300076" class="contact-item"><span>📞</span> 676 30 00 76</a>
+            <a href="mailto:tonohc94@gmail.com" class="contact-item"><span>✉</span> tonohc94@gmail.com</a>
+            <a href="https://www.linkedin.com/in/antoni-honrubia-costa-386589148/" target="_blank" class="contact-item"><span>in</span> LinkedIn</a>
+            <div class="contact-item"><span>📍</span> Valencia, España</div>
+            <div class="contact-item"><span>🌍</span> Inglés: Fluidez Profesional</div>
+
+            <div class="section-title-side">Especialidades Tech</div>
+            <ul class="skills-list">
+                <li>IA Conversacional & Chatbots</li>
+                <li>Automatización Estratégica con IA</li>
+                <li>Motion Graphics (After Effects)</li>
+                <li>WordPress & Elementor Pro</li>
+                <li>Desarrollo Front-end (HTML/CSS)</li>
+                <li>Liderazgo de Equipos IT</li>
+                <li>Resolución de Problemas Críticos</li>
+            </ul>
+
+            <div class="section-title-side">Soft Skills</div>
+            <ul class="skills-list">
+                <li>Pensamiento Estratégico</li>
+                <li>Adaptabilidad Internacional</li>
+                <li>Comunicación Audiovisual</li>
+                <li>Resolución de Conflictos</li>
+            </ul>
+
+            <div class="section-title-side">Algunos proyectos web</div>
+            <ul class="skills-list">
+                <li><a href="https://saraymas.com/" target="_blank" style="display: block; width: 100%;">🌐 saraymas.com ↗</a></li>
+                <li><a href="https://standexpo.es/" target="_blank" style="display: block; width: 100%;">🌐 standexpo.es ↗</a></li>
+                <li><a href="https://onofflevante.com/" target="_blank" style="display: block; width: 100%;">🌐 onofflevante.com ↗</a></li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <section>
+                <h2>Perfil Profesional</h2>
+                <p class="about-text">
+                    <strong>Creative Technologist</strong> con un perfil híbrido que une el Grado en Comunicación Audiovisual, el Desarrollo (DAM) y una sólida base técnica tras 3 años en Ingeniería Multimedia. Mi enfoque profesional se centra en la intersección de la narrativa visual y la tecnología, con una especialización crítica en la <strong>innovación mediante Inteligencia Artificial</strong>.
+                    <br><br>
+                    Actualmente lidero la optimización de flujos operativos mediante la implementación de soluciones de <strong>IA Conversacional y Automatización</strong>. En el ámbito creativo, domino la integración de IA generativa en flujos de trabajo de Motion Graphics y diseño web avanzado sobre el ecosistema <strong>WordPress & Elementor Pro</strong>. Tras mi etapa profesional en <strong>Nottingham (UK)</strong>, aporto una visión global, fluidez en inglés y una mentalidad orientada a la resolución de problemas técnicos complejos.
+                </p>
+            </section>
+
+            <section>
+                <h2>Experiencia Clave</h2>
+                
+                <div class="experience-item">
+                    <div class="job-header">
+                        <span class="job-title">Responsable de Equipo Informático</span>
+                        <span class="job-date">2024 - ACTUALIDAD</span>
+                    </div>
+                    <span class="company-name">Khaos Digital</span>
+                    <ul>
+                        <li>Liderazgo y coordinación estratégica del departamento IT.</li>
+                        <li>Implementación de soluciones de <strong>IA para automatización</strong> de procesos operativos.</li>
+                        <li>Gestión integral y desarrollo del ecosistema web corporativo.</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <div class="job-header">
+                        <span class="job-title">Experiencia Internacional</span>
+                        <span class="job-date">2023 - 2024</span>
+                    </div>
+                    <span class="company-name">Nottingham, Reino Unido</span>
+                    <ul>
+                        <li>Desempeño profesional en entorno anglosajón de alta exigencia.</li>
+                        <li>Resolución de retos técnicos en contextos multiculturales.</li>
+                        <li>Consolidación de fluidez total en inglés y adaptabilidad proactiva.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2>Formación Académica</h2>
+                <div class="education-item">
+                    <span class="edu-title">Técnico Superior DAM (Desarrollo Multiplataforma)</span>
+                    <span class="edu-desc">CIPFP Cheste | CIPFP Mislata</span>
+                </div>
+                <div class="education-item">
+                    <span class="edu-title">Grado en Comunicación Audiovisual</span>
+                    <span class="edu-desc">Universidad de Valencia</span>
+                </div>
+                <div class="education-item">
+                    <span class="edu-title">Ingeniería Multimedia (3 años cursados)</span>
+                    <span class="edu-desc">Universidad de Valencia | Base en algoritmos y fundamentos de computación.</span>
+                </div>
+            </section>
+
+            <a href="https://www.linkedin.com/in/antoni-honrubia-costa-386589148/" target="_blank" class="portfolio-btn">Ver Portfolio Completo en LinkedIn</a>
+        </main>
+    </div>
+
+</body>
+</html>
