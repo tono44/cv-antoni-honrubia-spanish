@@ -158,6 +158,19 @@
             background: linear-gradient(135deg, var(--accent-light) 0%, var(--accent) 100%);
         }
 
+        /* RESPONSIVE: AJUSTES PARA DISPOSITIVOS MÓVILES */
+        @media screen and (max-width: 768px) {
+            body { padding: 10px; }
+            .cv-container { grid-template-columns: 1fr; border-radius: 8px; }
+            .sidebar { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.05); padding: 30px 20px; }
+            .main-content { padding: 35px 20px; }
+            .tagline { margin-bottom: 25px; }
+            .job-header { flex-direction: column; align-items: flex-start; gap: 6px; }
+            .job-date { margin-top: 2px; display: inline-block; }
+            h2::after { margin-left: 10px; }
+            .portfolio-btn { width: 100%; text-align: center; }
+        }
+
         @media print {
             body { padding: 0; background: white; background-image: none; }
             .cv-container { box-shadow: none; border-radius: 0; width: 100%; border: none; }
