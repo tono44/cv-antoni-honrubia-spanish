@@ -7,9 +7,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #12141a; /* Un negro más profundo y tech */
+            --primary: #12141a;
             --accent: #00a8ff;
-            --accent-light: #33ccff; /* Para degradados */
+            --accent-light: #33ccff;
             --text-dark: #2d3436;
             --text-light: #636e72;
             --sidebar-bg: #12141a;
@@ -24,7 +24,6 @@
             color: var(--text-dark);
             line-height: 1.6;
             padding: 40px 20px;
-            /* MEJORA 1: Fondo de cuadrícula sutil */
             background-color: var(--bg-body);
             background-image: radial-gradient(#d1d1d1 0.5px, transparent 0.5px), radial-gradient(#d1d1d1 0.5px, var(--bg-body) 0.5px);
             background-size: 20px 20px;
@@ -37,58 +36,78 @@
             background: var(--card-bg);
             display: grid;
             grid-template-columns: 320px 1fr;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.15); /* Sombra más profunda */
-            border-radius: 16px; /* Bordes más suaves */
+            box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+            border-radius: 16px;
             overflow: hidden;
-            border: 1px solid rgba(0,0,0,0.05); /* Borde casi invisible */
+            border: 1px solid rgba(0,0,0,0.05);
         }
 
         a { text-decoration: none; color: inherit; transition: 0.3s; }
         a:hover { color: var(--accent); }
 
-        /* Sidebar */
         .sidebar {
             background-color: var(--sidebar-bg);
             color: white;
-            padding: 60px 40px; /* Más aire */
+            padding: 50px 35px; /* Ajustado para que quepa la nueva sección */
             border-right: 1px solid rgba(255,255,255,0.05);
         }
 
         .profile h1 { font-size: 2rem; line-height: 1.1; margin-bottom: 8px; font-weight: 700; letter-spacing: -1px; }
-        .tagline { color: var(--accent); font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 50px; }
+        .tagline { color: var(--accent); font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 40px; }
 
         .section-title-side {
             font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 2px;
             color: #888;
-            margin-bottom: 18px;
+            margin-bottom: 12px;
             border-bottom: 1px solid #333;
             padding-bottom: 6px;
-            margin-top: 40px;
+            margin-top: 30px;
         }
 
-        .contact-item { margin-bottom: 14px; font-size: 0.9rem; display: flex; align-items: center; }
+        .contact-item { margin-bottom: 12px; font-size: 0.9rem; display: flex; align-items: center; }
         .contact-item span { color: var(--accent); margin-right: 10px; width: 20px; text-align: center; }
 
         .skills-list { list-style: none; }
         .skills-list li { 
-            margin-bottom: 10px; 
+            margin-bottom: 8px; 
             font-size: 0.85rem; 
             background: rgba(255,255,255,0.03); 
             padding: 6px 12px; 
             border-radius: 6px;
-            border-left: 3px solid transparent; /* Reservamos espacio */
-            transition: all 0.3s ease; /* Transición suave */
+            border-left: 3px solid transparent;
+            transition: all 0.3s ease;
         }
-        /* MEJORA 3: Efecto de luz interactivo */
         .skills-list li:hover {
             background: rgba(255,255,255,0.08);
             border-left: 3px solid var(--accent);
             transform: translateX(5px);
         }
 
-        /* Main Content */
+        /* Estilo para las etiquetas de lenguajes */
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            list-style: none;
+            margin-top: 10px;
+        }
+        .tech-tags li {
+            font-size: 0.75rem;
+            background: rgba(255,255,255,0.06);
+            padding: 4px 10px;
+            border-radius: 4px;
+            border: 1px solid rgba(255,255,255,0.1);
+            color: #e0e0e0;
+            transition: all 0.3s ease;
+        }
+        .tech-tags li:hover {
+            background: rgba(0, 168, 255, 0.15);
+            border-color: var(--accent);
+            color: white;
+        }
+
         .main-content { padding: 60px; }
 
         h2 {
@@ -98,7 +117,6 @@
             align-items: center;
             font-weight: 700;
             letter-spacing: -0.5px;
-            /* MEJORA 2: Degradado suave en títulos */
             background: linear-gradient(135deg, var(--primary) 60%, var(--accent) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -121,7 +139,6 @@
         .edu-title { font-weight: 700; color: var(--primary); display: block; font-size: 1rem; }
         .edu-desc { font-size: 0.9rem; color: var(--text-light); }
 
-        /* MEJORA 4: Botón Portfolio refinado */
         .portfolio-btn {
             display: inline-block;
             margin-top: 30px;
@@ -147,6 +164,7 @@
             .cv-container { box-shadow: none; border-radius: 0; width: 100%; border: none; }
             .sidebar { border-right: none; }
             .skills-list li { background: rgba(0,0,0,0.03); color: #333; border-left: 3px solid #ccc; }
+            .tech-tags li { background: none; border: 1px solid #ccc; color: #333; }
             h2 { background: none; -webkit-text-fill-color: var(--primary); color: var(--primary); }
             h2::after { background: #eee; }
             .portfolio-btn { display: none; }
@@ -166,7 +184,7 @@
             <div class="section-title-side">Contacto</div>
             <a href="tel:+34676300076" class="contact-item"><span>📞</span> 676 30 00 76</a>
             <a href="mailto:tonohc94@gmail.com" class="contact-item"><span>✉</span> tonohc94@gmail.com</a>
-            <a href="https://www.linkedin.com/in/antoni-honrubia-costa-386589148/" target="_blank" class="contact-item"><span>in</span> LinkedIn</a>
+            <a href="https://www.linkedin.com/in/antoni-honrubia-costa-386589148/" target="_blank" class="contact-item"><span>in</span> linkedin.com/in/antoni-honrubia</a>
             <div class="contact-item"><span>📍</span> Valencia, España</div>
             <div class="contact-item"><span>🌍</span> Inglés: Fluidez Profesional</div>
 
@@ -181,19 +199,31 @@
                 <li>Resolución de Problemas Críticos</li>
             </ul>
 
+            <!-- NUEVA SECCIÓN DE LENGUAJES Y TECNOLOGÍAS -->
+            <div class="section-title-side">Tecnologías & Código</div>
+            <ul class="tech-tags">
+                <li>JavaScript</li>
+                <li>PHP</li>
+                <li>HTML5 / CSS3</li>
+                <li>SQL</li>
+                <li>Java</li>
+                <li>Git / GitHub</li>
+                <li>Tailwind CSS</li>
+            </ul>
+
             <div class="section-title-side">Soft Skills</div>
             <ul class="skills-list">
                 <li>Pensamiento Estratégico</li>
                 <li>Adaptabilidad Internacional</li>
                 <li>Comunicación Audiovisual</li>
-                <li>Resolución de Conflictos</li>
+                <li>Resolución de Controversias</li>
             </ul>
 
             <div class="section-title-side">Algunos proyectos web</div>
             <ul class="skills-list">
-                <li><a href="https://saraymas.com/" target="_blank" style="display: block; width: 100%;">🌐 saraymas.com ↗</a></li>
-                <li><a href="https://standexpo.es/" target="_blank" style="display: block; width: 100%;">🌐 standexpo.es ↗</a></li>
-                <li><a href="https://onofflevante.com/" target="_blank" style="display: block; width: 100%;">🌐 onofflevante.com ↗</a></li>
+                <li style="padding: 0;"><a href="https://saraymas.com/" target="_blank" style="display: block; padding: 6px 12px; width: 100%;">🌐 saraymas.com ↗</a></li>
+                <li style="padding: 0;"><a href="https://standexpo.es/" target="_blank" style="display: block; padding: 6px 12px; width: 100%;">🌐 standexpo.es ↗</a></li>
+                <li style="padding: 0;"><a href="https://onofflevante.com/" target="_blank" style="display: block; padding: 6px 12px; width: 100%;">🌐 onofflevante.com ↗</a></li>
             </ul>
         </aside>
 
@@ -219,7 +249,7 @@
                     <ul>
                         <li>Liderazgo y coordinación estratégica del departamento IT.</li>
                         <li>Implementación de soluciones de <strong>IA para automatización</strong> de procesos operativos.</li>
-                        <li>Gestión integral y desarrollo del ecosistema web corporativo.</li>
+                        <li>Gestión integral y desarrollo del ecosistema web corporativo mediante código personalizado.</li>
                     </ul>
                 </div>
 
@@ -249,7 +279,7 @@
                 </div>
                 <div class="education-item">
                     <span class="edu-title">Ingeniería Multimedia (3 años cursados)</span>
-                    <span class="edu-desc">Universidad de Valencia | Base en algoritmos y fundamentos de computación.</span>
+                    <span class="edu-desc">Universidad de Valencia | Sólida base en diseño de algoritmos y fundamentos de computación.</span>
                 </div>
             </section>
 
